@@ -1,40 +1,58 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const cors = require('cors');
-const connectDB = require('./config/db');
-const path = require('path');
-
-dotenv.config();
-connectDB();
+import express from "express";
+import "dotenv/config";
+import cors from "cors";
+import connectDB from "./config/mongodb.js";
+import connectCloudinary from "./config/cloudinary.js";
+import userRouter from "./routes/userRoute.js";
+import productRouter from "./routes/productRoute.js";
+import cartRouter from "./routes/cartRoute.js";
+import orderRouter from "./routes/orderRoute.js";
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-// Set CORS for frontend URL / allow single-node deploy
-app.use(cors({
-  origin: ['http://localhost:3000', 'http://127.0.0.1:3000', process.env.FRONTEND_URL],
-  credentials: true
-}));
+// ✅ DB & Cloudinary
+connectDB();
+connectCloudinary();
+
+// ✅ CORS (SECURE)
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://e-commerce-application-neon-delta.vercel.app",
+  "https://e-commerce-application-g89y.vercel.app"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization", "token"],
+  })
+);
 
 app.use(express.json());
 
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/products', require('./routes/productRoutes'));
-app.use('/api/orders', require('./routes/orderRoutes'));
-app.use('/api/payment', require('./routes/paymentRoutes'));
-app.use('/api/analytics', require('./routes/analyticsRoutes'));
+// ✅ Routes
+app.use("/api/users", userRouter);
+app.use("/api/products", productRouter);
+app.use("/api/cart", cartRouter);
+app.use("/api/order", orderRouter);
 
-// Serve frontend in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../frontend/build')));
-  
-  app.use((req, res) => {
-    res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
-  });
-} else {
-  app.get('/', (req, res) => {
-    res.send('NextKart API is running in Development mode...');
-  });
-}
+// ✅ Test route
+app.get("/", (req, res) => {
+  res.send("Server is running");
+});
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// ✅ Start server
+app.listen(PORT, () => {
+  console.log(`✅ Server is running on port ${PORT}`);
+});

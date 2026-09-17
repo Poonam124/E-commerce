@@ -1,51 +1,177 @@
 import React from 'react';
+import { Heart, Users, Award, Sparkles } from 'lucide-react';
 
 const About = () => {
-  const containerStyle = {
-    maxWidth: '900px',
-    margin: '0 auto',
-    padding: '40px',
-    background: '#18181b',
-    borderRadius: '16px',
-    border: '1px solid rgba(255, 255, 255, 0.05)',
-    boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
-    textAlign: 'center'
-  };
+  const values = [
+    {
+      icon: Heart,
+      title: 'Handmade with Love',
+      description: 'Every product is crafted with care and attention to detail, ensuring each piece is unique and special.'
+    },
+    {
+      icon: Users,
+      title: 'Community First',
+      description: 'We support local artisans and craftspeople, building a community of creative individuals.'
+    },
+    {
+      icon: Award,
+      title: 'Quality Guaranteed',
+      description: 'We use only premium materials and maintain the highest standards in every product we create.'
+    },
+    {
+      icon: Sparkles,
+      title: 'Custom Made',
+      description: 'Personalize your items to fit your emotions and make them truly yours.'
+    }
+  ];
 
-  const socialBtnStyle = {
-    display: 'inline-block',
-    margin: '10px',
-    padding: '10px 20px',
-    background: '#27272a',
-    color: '#fff',
-    borderRadius: '8px',
-    textDecoration: 'none',
-    transition: 'all 0.3s ease',
-    border: '1px solid rgba(255, 255, 255, 0.1)'
-  };
+  const team = [
+    {
+      name: 'Sarah Johnson',
+      role: 'Founder & Designer',
+      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300'
+    },
+    {
+      name: 'Michael Chen',
+      role: 'Master Craftsman',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300'
+    },
+    {
+      name: 'Emily Rodriguez',
+      role: 'Creative Director',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300'
+    },
+    {
+      name: 'David Kim',
+      role: 'Operations Manager',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300'
+    }
+  ];
 
   return (
-    <div style={containerStyle}>
-      <img
-        src="/dp.jpg"
-        alt="@theshivanshvasu"
-        style={{ width: '180px', height: '180px', borderRadius: '50%', objectFit: 'cover', border: '4px solid #f97316', marginBottom: '20px', boxShadow: '0 4px 20px rgba(249, 115, 22, 0.4)' }}
-      />
-      <h2 style={{ fontSize: '2.5rem', marginBottom: '10px', color: '#fff' }}>About Me</h2>
-      <h3 style={{ fontSize: '1.5rem', color: '#f97316', marginBottom: '15px' }}>Shivansh Vasu (@theshivanshvasu)</h3>
+    <div className="min-h-screen bg-green-50">
+      {/* Hero Section */}
+      <div className="bg-white py-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-5xl font-serif text-gray-800 mb-6">About NEXTKART</h1>
+          <p className="text-xl text-gray-600 leading-relaxed">
+            We believe in the power of handmade craftsmanship and the beauty of products made with love. 
+            Every item in our collection tells a story and carries the passion of our talented artisans.
+          </p>
+        </div>
+      </div>
 
-      <p style={{ color: '#a1a1aa', fontSize: '1.2rem', lineHeight: '1.8', maxWidth: '600px', margin: '0 auto 30px auto' }}>
-        <strong>Join the community and grow together!</strong> Welcome to my platform where we build, deploy, and scale highly engineered systems.
-      </p>
+      {/* Story Section */}
+      <div className="py-16 px-4">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <img 
+              src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=600" 
+              alt="Our workspace"
+              className="rounded-lg shadow-lg w-full"
+            />
+          </div>
+          <div>
+            <h2 className="text-3xl font-serif text-gray-800 mb-6">Our Story</h2>
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              NEXTKART was born from a simple idea: to create beautiful, handmade products that bring joy 
+              to everyday life. What started as a small workshop in 2018 has grown into a community of passionate 
+              artisans dedicated to their craft.
+            </p>
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              Each product is carefully designed and handcrafted using traditional techniques combined with 
+              modern aesthetics. We source sustainable materials and work closely with local craftspeople to 
+              ensure every piece meets our high standards of quality.
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              Today, we're proud to serve customers across India, spreading the love of handmade products 
+              and supporting the artisan community.
+            </p>
+          </div>
+        </div>
+      </div>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px', marginTop: '20px' }}>
-        <a href="https://theshivanshvasu.com" target="_blank" rel="noreferrer" style={socialBtnStyle}>🌐 Website</a>
-        <a href="https://youtube.com/@shivanshvasu" target="_blank" rel="noreferrer" style={{ ...socialBtnStyle, background: 'rgba(239, 68, 68, 0.2)', borderColor: '#ef4444', color: '#ef4444' }}>📺 YouTube</a>
-        <a href="https://instagram.com/theshivanshvasuofficial" target="_blank" rel="noreferrer" style={{ ...socialBtnStyle, background: 'rgba(236, 72, 153, 0.2)', borderColor: '#ec4899', color: '#ec4899' }}>📸 Instagram</a>
-        <a href="https://www.linkedin.com/in/theshivanshvasu" target="_blank" rel="noreferrer" style={{ ...socialBtnStyle, background: 'rgba(59, 130, 246, 0.2)', borderColor: '#3b82f6', color: '#3b82f6' }}>💼 LinkedIn</a>
-        <a href="https://x.com/theshivanshvasu" target="_blank" rel="noreferrer" style={socialBtnStyle}>✖️ X (Twitter)</a>
-        <a href="https://whatsapp.com/channel/0029VbAWGE5ICVfcjjKTAS0B" target="_blank" rel="noreferrer" style={{ ...socialBtnStyle, background: 'rgba(16, 185, 129, 0.2)', borderColor: '#10b981', color: '#10b981' }}>💬 WhatsApp</a>
-        <a href="https://linktr.ee/shivanshvasu" target="_blank" rel="noreferrer" style={socialBtnStyle}>🔗 Linktree</a>
+      {/* Values Section */}
+      <div className="py-16 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-serif text-gray-800 text-center mb-12">Our Values</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {values.map((value, idx) => (
+              <div key={idx} className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+                  <value.icon className="w-8 h-8 text-green-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">{value.title}</h3>
+                <p className="text-gray-600 text-sm">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Team Section */}
+      <div className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-serif text-gray-800 text-center mb-4">Meet Our Team</h2>
+          <p className="text-gray-600 text-center mb-12">
+            The talented people behind NEXTKART
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {team.map((member, idx) => (
+              <div key={idx} className="text-center">
+                <div className="mb-4 overflow-hidden rounded-full w-48 h-48 mx-auto">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="font-semibold text-gray-800 mb-1">{member.name}</h3>
+                <p className="text-sm text-gray-600">{member.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Stats Section */}
+      <div className="py-16 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl font-bold text-gray-800 mb-2">5000+</div>
+              <p className="text-gray-600">Happy Customers</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-gray-800 mb-2">200+</div>
+              <p className="text-gray-600">Unique Products</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-gray-800 mb-2">50+</div>
+              <p className="text-gray-600">Local Artisans</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-gray-800 mb-2">6+</div>
+              <p className="text-gray-600">Years of Excellence</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="py-16 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-serif text-gray-800 mb-4">Join Our Journey</h2>
+          <p className="text-gray-600 mb-8">
+            Explore our collection and find something that speaks to your heart
+          </p>
+          <a 
+            href="/collection"
+            className="inline-block bg-gray-700 text-white px-10 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors no-underline"
+          >
+            Shop Now
+          </a>
+        </div>
       </div>
     </div>
   );

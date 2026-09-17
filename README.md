@@ -1,12 +1,9 @@
 # 🛒 Full Stack E-Commerce Application (MERN)
 
 A complete **Full-Stack MERN E-Commerce Platform** with a **Customer Frontend**, **Admin Dashboard**, and a **secure Backend API**.  
-This project includes authentication, product management, image uploads, cart, orders, and online payments.
+This project includes authentication, product management, image uploads, cart, orders.
 
 ---
-
-## 🌐 Live Project Links
-https://e-commerce-application-neon-delta.vercel.app/
 
 
 ## 🚀 Features
